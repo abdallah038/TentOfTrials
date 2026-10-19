@@ -1,0 +1,8 @@
+{
+  "commit_id": "bf2147ac",
+  "timestamp": "2026-10-19T21:19:54.265665",
+  "platform": "Windows",
+  "python_version": "Python 3.14.7",
+  "status": "partial",
+  "note": "build.py requires Node.js/npm which is not available on this machine. Tests pass via unittest."
+}

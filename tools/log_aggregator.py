@@ -104,10 +104,12 @@ class LogParser:
         return 'unknown'
 
     def extract_service(self, line: str) -> Optional[str]:
-        match = re.search(r'\[(\w+)\]', line)
+        # Match [service_name] — allow hyphens (e.g., [auth-service])
+        match = re.search(r'\[([a-zA-Z][a-zA-Z0-9_-]*)\]', line)
         if match:
             return match.group(1)
-        match = re.search(r'(\w+)\s*:', line)
+        # Match UPPERCASE_SERVICE: — require letter start to avoid timestamp fragments
+        match = re.search(r'\b([A-Z][A-Z0-9_-]+)\s*:', line)
         if match and match.group(1).isupper():
             return match.group(1)
         return None
